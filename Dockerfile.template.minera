@@ -7,15 +7,12 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    lighttpd php5-cgi 
+    curl git automake 
 
-RUN lighty-enable-mod fastcgi 
-RUN lighty-enable-mod fastcgi-php
-RUN /etc/init.d/lighttpd force-reload           
+# Enable systemd init system in container
+ENV INITSYSTEM on
 
-RUN apt-get install -y redis-server git screen php5-cli php5-curl
-
-#RUN sudo git clone https://github.com/michelem09/minera /var/www/minera
+RUN curl -o- https://raw.githubusercontent.com/michelem09/minera/master/install_minera_ubuntu.sh | sudo bash
 
 # Defines our working directory in container
 #WORKDIR /var/www/minera/
@@ -25,8 +22,5 @@ RUN apt-get install -y redis-server git screen php5-cli php5-curl
 #RUN ./configure
 
 #RUN make
-
-# Enable systemd init system in container
-ENV INITSYSTEM on
 
 #CMD ["./bfgminer", "-o stratum.bitcoin.cz:3333 -O username.worker:password -S all"]

@@ -1,0 +1,1 @@
+# resin-bitcoin-miner

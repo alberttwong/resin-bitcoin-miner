@@ -7,15 +7,20 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    autoconf autogen automake libtool uthash-dev libjansson-dev libcurl4-openssl-dev libusb-dev libncurses-dev git-core && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    lighttpd php5-cgi 
 
-RUN git clone https://github.com/luke-jr/bfgminer.git /usr/src/app/bfgminer
+RUN lighty-enable-mod fastcgi 
+RUN lighty-enable-mod fastcgi-php
+RUN service lighttpd force-reload           
+
+RUN apt-get install -y redis-server git screen php5-cli php5-curl
+
+RUN sudo git clone https://github.com/michelem09/minera /var/www/minera
 
 # Defines our working directory in container
-WORKDIR /usr/src/app/bfgminer
+WORKDIR /var/www/minera/
 
-RUN ./autogen.sh 
+#RUN ./autogen.sh 
 
 #RUN ./configure
 

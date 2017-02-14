@@ -7,7 +7,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    curl 
+    curl git automake 
 
 RUN curl -o- https://raw.githubusercontent.com/michelem09/minera/master/install_minera_ubuntu.sh | sudo bash
 

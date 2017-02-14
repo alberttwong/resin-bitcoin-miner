@@ -11,14 +11,14 @@ RUN apt-get update && apt-get install -yq \
 
 RUN lighty-enable-mod fastcgi 
 RUN lighty-enable-mod fastcgi-php
-RUN service lighttpd force-reload           
+#RUN service lighttpd force-reload           
 
-RUN apt-get install -y redis-server git screen php5-cli php5-curl
+#RUN apt-get install -y redis-server git screen php5-cli php5-curl
 
-RUN sudo git clone https://github.com/michelem09/minera /var/www/minera
+#RUN sudo git clone https://github.com/michelem09/minera /var/www/minera
 
 # Defines our working directory in container
-WORKDIR /var/www/minera/
+#WORKDIR /var/www/minera/
 
 #RUN ./autogen.sh 
 

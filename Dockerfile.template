@@ -7,7 +7,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    autoconf autogen libtool uthash-dev libjansson-dev libcurl4-openssl-dev libusb-dev libncurses-dev git-core && \
+    autoconf autogen automake libtool uthash-dev libjansson-dev libcurl4-openssl-dev libusb-dev libncurses-dev git-core && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/luke-jr/bfgminer.git /usr/src/app/bfgminer
@@ -15,7 +15,7 @@ RUN git clone https://github.com/luke-jr/bfgminer.git /usr/src/app/bfgminer
 # Defines our working directory in container
 WORKDIR /usr/src/app/bfgminer
 
-#RUN ./autogen.sh 
+RUN ./autogen.sh 
 
 #RUN ./configure
 

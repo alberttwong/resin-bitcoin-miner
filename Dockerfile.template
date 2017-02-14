@@ -15,14 +15,13 @@ RUN git clone https://github.com/luke-jr/bfgminer.git /usr/src/app/bfgminer
 # Defines our working directory in container
 WORKDIR /usr/src/app/bfgminer
 
-RUN ./autogen.sh 
+#RUN ./autogen.sh 
 
-RUN ./configure
+#RUN ./configure
 
-RUN make
+#RUN make
 
 # Enable systemd init system in container
 ENV INITSYSTEM on
 
-# server.js will run when container starts up on the device
-CMD ["./bfgminer", "-o stratum.bitcoin.cz:3333 -O username.worker:password -S all"]
+#CMD ["./bfgminer", "-o stratum.bitcoin.cz:3333 -O username.worker:password -S all"]

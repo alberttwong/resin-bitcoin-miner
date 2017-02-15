@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -yq \
 # Enable systemd init system in container
 ENV INITSYSTEM on
 
-CMD ["screen", "-dmS bfgminer bfgminer --url stratum+tcp://us-east.stratum.bitcoin.cz:3333 --userpass atwong.worker1 "]
+CMD ["bfgminer", "-T --url stratum+tcp://us-east.stratum.bitcoin.cz:3333 --userpass atwong.worker1 "]

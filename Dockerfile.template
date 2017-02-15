@@ -7,9 +7,9 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 # use apt-get if you need to install dependencies,
 # for instance if you need ALSA sound utils, just uncomment the lines below.
 RUN apt-get update && apt-get install -yq \
-    bfgminer 
+    bfgminer screen
 
 # Enable systemd init system in container
 ENV INITSYSTEM on
 
-CMD ["bfgminer", "--url stratum+tcp://us-east.stratum.bitcoin.cz:3333 --userpass atwong.worker1 "]
+CMD ["screen", "-dmS bfgminer bfgminer --url stratum+tcp://us-east.stratum.bitcoin.cz:3333 --userpass atwong.worker1 "]
